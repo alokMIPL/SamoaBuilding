@@ -58,200 +58,204 @@ const CATEGORIES = [
 
 const CATEGORY_LOOKUP = Object.fromEntries(CATEGORIES.map((c) => [c.id, c]));
 
-// The real map's viewBox is 324.88 x 259.68 (from your GIS file). Marker
-// positions below are authored directly in that coordinate space.
+// The real map's viewBox is 324.88 x 259.68 (matches the American Samoa GIS
+// file: Tutuila runs across the bottom two-thirds, the Manu'a group (Ofu,
+// Olosega, Ta'u) sits along the top, with Swains Island upper-left, Aunu'u
+// just off Tutuila's east end, and Rose Atoll far to the southeast). Marker
+// positions below are authored directly in that coordinate space, pinned to
+// real villages and landmarks.
 const VIEW_W = 324.88;
 const VIEW_H = 259.68;
 
 const SIGNALS = [
   {
     id: "s1",
-    x: 158,
-    y: 79,
+    x: 195,
+    y: 127,
     count: 9,
     category: "infrastructure",
-    title: "Delhi\u2013NCR transit expansion",
+    title: "Pago Pago Harbor upgrade",
   },
   {
     id: "s2",
-    x: 137,
-    y: 59,
+    x: 207,
+    y: 110,
     count: 1,
     category: "defence",
-    title: "Punjab border outpost upgrade",
+    title: "Blunts Point battery restoration",
   },
   {
     id: "s3",
-    x: 126,
-    y: 44,
+    x: 280,
+    y: 15,
     count: 1,
     category: "education",
-    title: "Ladakh research campus",
+    title: "Ta\u2019u community campus",
   },
   {
     id: "s4",
-    x: 80,
-    y: 119,
+    x: 45,
+    y: 200,
     count: 1,
     category: "infrastructure",
-    title: "Rajasthan solar corridor",
+    title: "Leone village seawall",
   },
   {
     id: "s5",
-    x: 185,
-    y: 134,
+    x: 120,
+    y: 200,
     count: 1,
     category: "energy",
-    title: "MP power grid link",
+    title: "Tafuna solar array",
   },
   {
     id: "s6",
-    x: 294,
-    y: 93,
+    x: 195,
+    y: 110,
     count: 1,
     category: "space",
-    title: "Assam ground station",
+    title: "Mount Alava satellite relay",
   },
   {
     id: "s7",
-    x: 212,
-    y: 154,
+    x: 125,
+    y: 205,
     count: 1,
     category: "transportation",
-    title: "Odisha port rail line",
+    title: "Pago Pago Int\u2019l runway extension",
   },
   {
     id: "s8",
-    x: 192,
-    y: 184,
+    x: 150,
+    y: 195,
     count: 1,
     category: "transportation",
-    title: "Andhra coastal highway",
+    title: "Ottoville\u2013Nu\u2019uuli coastal road",
   },
   {
     id: "s9",
-    x: 61,
-    y: 166,
+    x: 190,
+    y: 130,
     count: 1,
     category: "research",
-    title: "Mumbai marine institute",
+    title: "Fagatogo marine lab",
   },
   {
     id: "s10",
-    x: 75,
-    y: 171,
+    x: 140,
+    y: 190,
     count: 1,
     category: "ai",
-    title: "Pune AI cluster",
+    title: "ASCC tech hub",
   },
   {
     id: "s11",
-    x: 153,
-    y: 184,
+    x: 200,
+    y: 130,
     count: 2,
     category: "ai",
-    title: "Hyderabad compute park",
+    title: "Utulei digital services center",
   },
   {
     id: "s12",
-    x: 163,
-    y: 192,
+    x: 205,
+    y: 125,
     count: 3,
     category: "manufacturing",
-    title: "Telangana fab units",
+    title: "Atu\u2019u cannery expansion",
   },
   {
     id: "s13",
-    x: 123,
-    y: 211,
+    x: 195,
+    y: 135,
     count: 6,
     category: "startups",
-    title: "Bengaluru startup wave",
+    title: "Fagatogo startup incubator",
   },
   {
     id: "s14",
-    x: 137,
-    y: 215,
+    x: 305,
+    y: 152,
     count: 1,
     category: "research",
-    title: "Bengaluru research labs",
+    title: "Aunu\u2019u crater lake study",
   },
   {
     id: "s15",
-    x: 130,
-    y: 219,
+    x: 185,
+    y: 135,
     count: 1,
     category: "public-systems",
-    title: "Karnataka e-governance",
+    title: "LBJ Medical Center records system",
   },
   {
     id: "s16",
-    x: 148,
-    y: 221,
+    x: 155,
+    y: 190,
     count: 1,
     category: "manufacturing",
-    title: "Chennai auto plant",
+    title: "Malaeimi industrial park",
   },
   {
     id: "s17",
-    x: 107,
-    y: 229,
+    x: 140,
+    y: 170,
     count: 1,
     category: "agriculture",
-    title: "Kerala agri-tech pilot",
+    title: "Aoloau taro farms",
   },
   {
     id: "s18",
-    x: 123,
-    y: 236,
+    x: 180,
+    y: 135,
     count: 2,
     category: "public-systems",
-    title: "Kanyakumari desal plant",
+    title: "Faga\u2019alu water treatment plant",
   },
   {
     id: "s19",
-    x: 197,
-    y: 139,
+    x: 95,
+    y: 205,
     count: 1,
     category: "agriculture",
-    title: "Chhattisgarh irrigation",
+    title: "Vaitogi plantation restoration",
   },
   {
     id: "s20",
-    x: 154,
-    y: 102,
+    x: 160,
+    y: 195,
     count: 1,
     category: "healthcare",
-    title: "UP district hospital",
+    title: "Ili\u2019ili community clinic",
   },
   {
     id: "s21",
-    x: 303,
-    y: 89,
+    x: 150,
+    y: 25,
     count: 1,
     category: "science",
-    title: "Arunachal research station",
+    title: "Ofu coral research station",
   },
   {
     id: "s22",
-    x: 54,
-    y: 106,
+    x: 20,
+    y: 77,
     count: 1,
     category: "climate",
-    title: "Kutch renewable park",
+    title: "Swains Island monitoring buoy",
   },
   {
     id: "s23",
-    x: 233,
-    y: 119,
+    x: 300,
+    y: 225,
     count: 1,
     category: "conservation",
-    title: "Sundarbans restoration",
+    title: "Rose Atoll refuge restoration",
   },
 ];
 
 const TOTAL_48H = 41;
-const INDIA_WIDE = 36;
+const TERRITORY_WIDE = 36;
 const TOTAL_TODAY = 1;
 const TOTAL_ALL_TIME = 167;
 
@@ -305,23 +309,23 @@ export default function Samoa() {
       <div className="absolute left-5 top-5 z-20 w-[260px] space-y-3">
         <div className="rounded-2xl border border-white/10 bg-[#12141c]/90 p-4 shadow-2xl backdrop-blur">
           <h1 className="text-[15px] font-semibold tracking-tight text-white">
-            INDIA IS{" "}
+            AMERICAN SAMOA IS{" "}
             <span className="text-orange-400" style={{ fontFamily: "serif" }}>
-              \u092c\u093f\u0932\u094d\u0921\u093f\u0902\u0917
+              Atina\u02bbe
             </span>
           </h1>
           <div className="mt-2 inline-block rounded-md bg-orange-500/15 px-2 py-1 text-[10px] font-semibold tracking-wide text-orange-400">
-            INDEPENDENCE WEEK EDITION
+            FLAG DAY EDITION
           </div>
           <p className="mt-3 text-[13px] leading-snug text-white/70">
             <span className="font-semibold text-white">
               {TOTAL_ALL_TIME} things
             </span>{" "}
-            moved India forward since we started watching.
+            moved American Samoa forward since we started watching.
           </p>
         </div>
 
-        <div className="max-h-[62vh] overflow-y-auto rounded-2xl border border-white/10 bg-[#12141c]/90 p-1.5 shadow-2xl backdrop-blur [scrollbar-width:thin]">
+        <div className=" overflow-y-auto rounded-2xl border border-white/10 bg-[#12141c]/90 p-1.5 shadow-2xl backdrop-blur [scrollbar-width:thin]">
           {CATEGORIES.map((cat) => {
             const Icon = cat.icon;
             const isActive = active === cat.id;
@@ -372,17 +376,17 @@ export default function Samoa() {
         </button>
       </div>
 
-      {/* India-wide badge, floats above the map near the top */}
+      {/* Territory-wide badge, floats above the map near the top */}
       <button
         onClick={() => setActive("all")}
-        className="absolute right-[230px] top-[64px] z-20 flex flex-col items-center gap-1.5"
+        className="absolute right-[260px] top-[24px] z-20 flex flex-col items-center gap-1.5"
         title="Signals not tied to one location"
       >
         <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-[#12141c] shadow-[0_0_24px_rgba(255,255,255,0.08)]">
           <Globe2 className="h-6 w-6 text-white/70" strokeWidth={1.5} />
         </span>
         <span className="text-[10px] font-medium tracking-wide text-white/50">
-          INDIA-WIDE \u00b7 {INDIA_WIDE}
+          TERRITORY-WIDE \u00b7 {TERRITORY_WIDE}
         </span>
       </button>
 
@@ -391,10 +395,11 @@ export default function Samoa() {
       {/* ------------------------------------------------------------ */}
       <div className="absolute bottom-16 right-5 z-20 w-[300px] rounded-2xl border border-white/10 bg-[#12141c]/90 p-4 shadow-2xl backdrop-blur">
         <div className="text-[10px] font-semibold tracking-wide text-orange-400">
-          DEAR INDIA, 2047
+          DEAR AMERICAN SAMOA, 2050
         </div>
         <p className="mt-1.5 text-[13px] leading-snug text-white/80">
-          India turns 100 in 2047. What do you hope we build by then?
+          American Samoa marks 150 years under the U.S. flag in 2050. What do
+          you hope we build by then?
         </p>
         <button className="mt-3 flex items-center gap-1 text-[12px] font-medium text-white hover:text-orange-300">
           Write a note <ArrowRight className="h-3.5 w-3.5" />
