@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function Home() {
   return <>
-  <SamoaMap />
-  <Samoa />
+  {/* <SamoaMap /> */}
+  {/* <Samoa /> */}
   <Samoa2 />
   </>;
 }
