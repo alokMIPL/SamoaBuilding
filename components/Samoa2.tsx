@@ -22,6 +22,8 @@ import {
   TrendingUp,
   Zap,
   Globe2,
+  Fish,
+  Palmtree,
 } from "lucide-react";
 
 // ---------------------------------------------------------------------------
@@ -32,7 +34,7 @@ import {
 // - SIGNALS are the map markers for the last 48 hours (sum to TOTAL_48H, 41).
 
 const CATEGORIES = [
-  { id: "all", label: "All", count: 167, icon: Compass },
+  { id: "all", label: "All", count: 179, icon: Compass },
   { id: "space", label: "Space", count: 6, icon: Rocket },
   { id: "science", label: "Science", count: 3, icon: FlaskConical },
   { id: "infrastructure", label: "Infrastructure", count: 15, icon: Landmark },
@@ -54,6 +56,8 @@ const CATEGORIES = [
   { id: "education", label: "Education", count: 3, icon: GraduationCap },
   { id: "climate", label: "Climate", count: 2, icon: CloudSun },
   { id: "conservation", label: "Conservation", count: 1, icon: Leaf },
+  { id: "fisheries", label: "Fisheries", count: 7, icon: Fish },
+  { id: "tourism", label: "Tourism", count: 5, icon: Palmtree },
 ];
 
 const CATEGORY_LOOKUP = Object.fromEntries(CATEGORIES.map((c) => [c.id, c]));
@@ -68,11 +72,17 @@ const CATEGORY_LOOKUP = Object.fromEntries(CATEGORIES.map((c) => [c.id, c]));
 // badge, e.g. "v42" -- match that id to the real village and add an entry
 // here). Any id without an entry falls back to a generic placeholder via
 // getVillageInfo() so the UI never breaks.
+type VillageHighlight = {
+  text: string;
+  // Matches a CATEGORIES[].id so the right icon renders next to it.
+  category: string;
+};
+
 type VillageInfo = {
   name: string;
   population?: string;
   summary: string;
-  highlights: string[];
+  highlights: VillageHighlight[];
 };
 
 const VILLAGES: Record<string, VillageInfo> = {
@@ -80,15 +90,20 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Aunu'u",
     summary:
       "Small volcanic island off Tutuila's eastern tip, reached by boat from Auasi.",
-    highlights: [],
+    highlights: [
+      { text: "Aunu\u2019u crater lake study", category: "research" },
+    ],
   },
   v42: {
     name: "Pago Pago",
     population: "\u2248 3,500",
     summary: "Harbor village and the territory's commercial hub.",
     highlights: [
-      "Pago Pago Harbor upgrade underway",
-      "Deep-water port serves the tuna canning industry",
+      { text: "Pago Pago Harbor upgrade", category: "infrastructure" },
+      {
+        text: "Deep-water port serves the tuna canning industry",
+        category: "manufacturing",
+      },
     ],
   },
   v1: {
@@ -129,9 +144,10 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v7: {
     name: "Alofau",
-    summary:
-      "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Eastern district (Sa'ole county), on Tutuila.",
+    highlights: [
+      { text: "Alofau community fish landing", category: "fisheries" },
+    ],
   },
   v8: {
     name: "Amaluia",
@@ -171,9 +187,11 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v14: {
     name: "Aoloau",
-    summary:
-      "Village in the Western district (Leasina county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Western district (Leasina county), on Tutuila.",
+    highlights: [
+      { text: "Aoloau taro farms", category: "agriculture" },
+      { text: "Aoloau microgrid pilot", category: "energy" },
+    ],
   },
   v15: {
     name: "Asili",
@@ -183,9 +201,10 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v16: {
     name: "Atu'u",
-    summary:
-      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Eastern district (Ma'oputasi county), on Tutuila.",
+    highlights: [
+      { text: "Atu\u2019u cannery expansion", category: "manufacturing" },
+    ],
   },
   v17: {
     name: "Au'asi",
@@ -231,15 +250,21 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v24: {
     name: "Faga'alu",
-    summary:
-      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Eastern district (Ma'oputasi county), on Tutuila.",
+    highlights: [
+      {
+        text: "LBJ Medical Center records system",
+        category: "public-systems",
+      },
+      { text: "Faga\u2019alu water treatment plant", category: "public-systems" },
+    ],
   },
   v25: {
     name: "Faga'itua",
-    summary:
-      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Eastern district (Sua county), on Tutuila.",
+    highlights: [
+      { text: "Faga\u2019itua high school renovation", category: "education" },
+    ],
   },
   v26: {
     name: "Fagali'i",
@@ -261,15 +286,18 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v29: {
     name: "Fagasa",
-    summary:
-      "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Eastern district (Ituau county), on Tutuila.",
+    highlights: [
+      { text: "Mount Alava satellite relay", category: "space" },
+    ],
   },
   v30: {
     name: "Fagatogo",
-    summary:
-      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Eastern district (Ma'oputasi county), on Tutuila.",
+    highlights: [
+      { text: "Fagatogo marine lab", category: "research" },
+      { text: "Fagatogo startup incubator", category: "startups" },
+    ],
   },
   v31: {
     name: "Failolo",
@@ -279,15 +307,17 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v32: {
     name: "Faleasao",
-    summary:
-      "Village in the Manu'a district (Faleasao county), on Ta'u. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Manu'a district (Faleasao county), on Ta'u.",
+    highlights: [
+      { text: "Faleasao fishing fleet modernization", category: "fisheries" },
+    ],
   },
   v33: {
     name: "Faleniu",
-    summary:
-      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Western district (Tualauta county), on Tutuila.",
+    highlights: [
+      { text: "Pago Pago Int\u2019l runway extension", category: "transportation" },
+    ],
   },
   v34: {
     name: "Fatumafuti",
@@ -303,9 +333,10 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v36: {
     name: "Ili'ili",
-    summary:
-      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Western district (Tualauta county), on Tutuila.",
+    highlights: [
+      { text: "Ili\u2019ili community clinic", category: "healthcare" },
+    ],
   },
   v37: {
     name: "Lauli'i",
@@ -321,9 +352,11 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v39: {
     name: "Leone",
-    summary:
-      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Western district (Lealataua county), on Tutuila.",
+    highlights: [
+      { text: "Leone village seawall", category: "infrastructure" },
+      { text: "Leone health clinic renovation", category: "healthcare" },
+    ],
   },
   v40: {
     name: "Leusoali'i",
@@ -333,9 +366,10 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v41: {
     name: "Luma",
-    summary:
-      "Village in the Manu'a district (Ta'u county), on Ta'u. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Manu'a district (Ta'u county), on Ta'u.",
+    highlights: [
+      { text: "Ta'u community campus", category: "education" },
+    ],
   },
   v43: {
     name: "Maia",
@@ -345,9 +379,10 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v44: {
     name: "Malaeimi",
-    summary:
-      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Western district (Tualauta county), on Tutuila.",
+    highlights: [
+      { text: "Malaeimi industrial park", category: "manufacturing" },
+    ],
   },
   v45: {
     name: "Malaeloa/Aitulagi",
@@ -369,9 +404,8 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v48: {
     name: "Mapusagafou",
-    summary:
-      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Western district (Tualauta county), on Tutuila.",
+    highlights: [{ text: "ASCC tech hub", category: "ai" }],
   },
   v49: {
     name: "Masausi",
@@ -399,9 +433,10 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v53: {
     name: "Nu'uuli",
-    summary:
-      "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Eastern district (Ituau county), on Tutuila.",
+    highlights: [
+      { text: "Ottoville\u2013Nu\u2019uuli coastal road", category: "transportation" },
+    ],
   },
   v54: {
     name: "Nua",
@@ -411,9 +446,10 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v55: {
     name: "Ofu",
-    summary:
-      "Village in the Manu'a district (Ofu county), on Ofu. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Manu'a district (Ofu county), on Ofu.",
+    highlights: [
+      { text: "Ofu coral research station", category: "science" },
+    ],
   },
   v56: {
     name: "Olosega",
@@ -453,9 +489,10 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v62: {
     name: "Rose",
-    summary:
-      "Located on Rose Atoll. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Located on Rose Atoll.",
+    highlights: [
+      { text: "Rose Atoll refuge restoration", category: "conservation" },
+    ],
   },
   v63: {
     name: "Sa'ilele",
@@ -489,15 +526,18 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v68: {
     name: "Swains",
-    summary:
-      "Located on Swains Island. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Located on Swains Island.",
+    highlights: [
+      { text: "Swains Island monitoring buoy", category: "climate" },
+    ],
   },
   v69: {
     name: "Tafuna",
-    summary:
-      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Western district (Tualauta county), on Tutuila.",
+    highlights: [
+      { text: "Tafuna solar array", category: "energy" },
+      { text: "Tafuna business incubator", category: "startups" },
+    ],
   },
   v70: {
     name: "Taputimu",
@@ -514,8 +554,11 @@ const VILLAGES: Record<string, VillageInfo> = {
   v72: {
     name: "Utulei",
     summary:
-      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila.",
+    highlights: [
+      { text: "Blunts Point battery restoration", category: "defence" },
+      { text: "Utulei digital services center", category: "ai" },
+    ],
   },
   v73: {
     name: "Utumea East",
@@ -543,15 +586,21 @@ const VILLAGES: Record<string, VillageInfo> = {
   },
   v77: {
     name: "Vaitogi",
-    summary:
-      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Western district (Tualauta county), on Tutuila.",
+    highlights: [
+      { text: "Vaitogi plantation restoration", category: "agriculture" },
+      {
+        text: "Vaitogi historic sliding rock overlook",
+        category: "tourism",
+      },
+    ],
   },
   v78: {
     name: "Vatia",
-    summary:
-      "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    summary: "Village in the Eastern district (Vaifanua county), on Tutuila.",
+    highlights: [
+      { text: "Vatia rainforest trail signage", category: "tourism" },
+    ],
   },
   v79: {
     name: "Aasu",
@@ -754,6 +803,9 @@ function getVillageInfo(id: string): VillageInfo {
 const VIEW_W = 324.88;
 const VIEW_H = 259.68;
 
+// Every signal carries a `district` id matching a VILLAGES key, so its
+// marker sits over that village and clicking it opens the same sidebar
+// used for clicking the village shape itself.
 const SIGNALS = [
   {
     id: "s1",
@@ -762,6 +814,7 @@ const SIGNALS = [
     count: 9,
     category: "infrastructure",
     title: "Pago Pago Harbor upgrade",
+    district: "v42",
   },
   {
     id: "s2",
@@ -770,6 +823,7 @@ const SIGNALS = [
     count: 1,
     category: "defence",
     title: "Blunts Point battery restoration",
+    district: "v72",
   },
   {
     id: "s3",
@@ -778,6 +832,7 @@ const SIGNALS = [
     count: 1,
     category: "education",
     title: "Ta\u2019u community campus",
+    district: "v41",
   },
   {
     id: "s4",
@@ -786,6 +841,7 @@ const SIGNALS = [
     count: 1,
     category: "infrastructure",
     title: "Leone village seawall",
+    district: "v39",
   },
   {
     id: "s5",
@@ -794,6 +850,7 @@ const SIGNALS = [
     count: 1,
     category: "energy",
     title: "Tafuna solar array",
+    district: "v69",
   },
   {
     id: "s6",
@@ -802,6 +859,7 @@ const SIGNALS = [
     count: 1,
     category: "space",
     title: "Mount Alava satellite relay",
+    district: "v29",
   },
   {
     id: "s7",
@@ -810,6 +868,7 @@ const SIGNALS = [
     count: 1,
     category: "transportation",
     title: "Pago Pago Int\u2019l runway extension",
+    district: "v33",
   },
   {
     id: "s8",
@@ -818,6 +877,7 @@ const SIGNALS = [
     count: 1,
     category: "transportation",
     title: "Ottoville\u2013Nu\u2019uuli coastal road",
+    district: "v53",
   },
   {
     id: "s9",
@@ -826,6 +886,7 @@ const SIGNALS = [
     count: 1,
     category: "research",
     title: "Fagatogo marine lab",
+    district: "v30",
   },
   {
     id: "s10",
@@ -834,6 +895,7 @@ const SIGNALS = [
     count: 1,
     category: "ai",
     title: "ASCC tech hub",
+    district: "v48",
   },
   {
     id: "s11",
@@ -842,6 +904,7 @@ const SIGNALS = [
     count: 2,
     category: "ai",
     title: "Utulei digital services center",
+    district: "v72",
   },
   {
     id: "s12",
@@ -850,6 +913,7 @@ const SIGNALS = [
     count: 3,
     category: "manufacturing",
     title: "Atu\u2019u cannery expansion",
+    district: "v16",
   },
   {
     id: "s13",
@@ -858,6 +922,7 @@ const SIGNALS = [
     count: 6,
     category: "startups",
     title: "Fagatogo startup incubator",
+    district: "v30",
   },
   {
     id: "s14",
@@ -866,6 +931,7 @@ const SIGNALS = [
     count: 1,
     category: "research",
     title: "Aunu\u2019u crater lake study",
+    district: "v95",
   },
   {
     id: "s15",
@@ -874,6 +940,7 @@ const SIGNALS = [
     count: 1,
     category: "public-systems",
     title: "LBJ Medical Center records system",
+    district: "v24",
   },
   {
     id: "s16",
@@ -882,6 +949,7 @@ const SIGNALS = [
     count: 1,
     category: "manufacturing",
     title: "Malaeimi industrial park",
+    district: "v44",
   },
   {
     id: "s17",
@@ -890,6 +958,7 @@ const SIGNALS = [
     count: 1,
     category: "agriculture",
     title: "Aoloau taro farms",
+    district: "v14",
   },
   {
     id: "s18",
@@ -898,6 +967,7 @@ const SIGNALS = [
     count: 2,
     category: "public-systems",
     title: "Faga\u2019alu water treatment plant",
+    district: "v24",
   },
   {
     id: "s19",
@@ -906,6 +976,7 @@ const SIGNALS = [
     count: 1,
     category: "agriculture",
     title: "Vaitogi plantation restoration",
+    district: "v77",
   },
   {
     id: "s20",
@@ -914,6 +985,7 @@ const SIGNALS = [
     count: 1,
     category: "healthcare",
     title: "Ili\u2019ili community clinic",
+    district: "v36",
   },
   {
     id: "s21",
@@ -922,6 +994,7 @@ const SIGNALS = [
     count: 1,
     category: "science",
     title: "Ofu coral research station",
+    district: "v55",
   },
   {
     id: "s22",
@@ -930,6 +1003,7 @@ const SIGNALS = [
     count: 1,
     category: "climate",
     title: "Swains Island monitoring buoy",
+    district: "v68",
   },
   {
     id: "s23",
@@ -938,13 +1012,86 @@ const SIGNALS = [
     count: 1,
     category: "conservation",
     title: "Rose Atoll refuge restoration",
+    district: "v62",
+  },
+  {
+    id: "s24",
+    x: 225,
+    y: 145,
+    count: 1,
+    category: "fisheries",
+    title: "Alofau community fish landing",
+    district: "v7",
+  },
+  {
+    id: "s25",
+    x: 200,
+    y: 90,
+    count: 1,
+    category: "tourism",
+    title: "Vatia rainforest trail signage",
+    district: "v78",
+  },
+  {
+    id: "s26",
+    x: 290,
+    y: 10,
+    count: 1,
+    category: "fisheries",
+    title: "Faleasao fishing fleet modernization",
+    district: "v32",
+  },
+  {
+    id: "s27",
+    x: 100,
+    y: 210,
+    count: 1,
+    category: "tourism",
+    title: "Vaitogi historic sliding rock overlook",
+    district: "v77",
+  },
+  {
+    id: "s28",
+    x: 125,
+    y: 195,
+    count: 1,
+    category: "startups",
+    title: "Tafuna business incubator",
+    district: "v69",
+  },
+  {
+    id: "s29",
+    x: 50,
+    y: 195,
+    count: 1,
+    category: "healthcare",
+    title: "Leone health clinic renovation",
+    district: "v39",
+  },
+  {
+    id: "s30",
+    x: 145,
+    y: 165,
+    count: 1,
+    category: "energy",
+    title: "Aoloau microgrid pilot",
+    district: "v14",
+  },
+  {
+    id: "s31",
+    x: 220,
+    y: 155,
+    count: 1,
+    category: "education",
+    title: "Faga\u2019itua high school renovation",
+    district: "v25",
   },
 ];
 
-const TOTAL_48H = 41;
+const TOTAL_48H = 48;
 const TERRITORY_WIDE = 36;
 const TOTAL_TODAY = 1;
-const TOTAL_ALL_TIME = 167;
+const TOTAL_ALL_TIME = 179;
 
 // ---------------------------------------------------------------------------
 // Component
@@ -2559,7 +2706,9 @@ export default function Samoa() {
                 key={s.id}
                 onMouseEnter={() => setHovered(s.id)}
                 onMouseLeave={() => setHovered(null)}
-                className="absolute flex items-center justify-center rounded-full border border-white/40 bg-[#171922] font-semibold text-white transition-all duration-150"
+                onClick={() => setSelectedDistrict(s.district)}
+                title={`${s.title} \u2014 click for village details`}
+                className="absolute flex cursor-pointer items-center justify-center rounded-full border border-white/40 bg-[#171922] font-semibold text-white transition-all duration-150"
                 style={{
                   left: `${(s.x / VIEW_W) * 100}%`,
                   top: `${(s.y / VIEW_H) * 100}%`,
@@ -2701,15 +2850,22 @@ export default function Samoa() {
                     DEVELOPMENT HIGHLIGHTS
                   </div>
                   <ul className="mt-2.5 space-y-2">
-                    {info.highlights.map((h, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2 text-[13px] leading-snug text-white/80"
-                      >
-                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-orange-400" />
-                        {h}
-                      </li>
-                    ))}
+                    {info.highlights.map((h, i) => {
+                      const HighlightIcon =
+                        CATEGORY_LOOKUP[h.category]?.icon ?? Compass;
+                      return (
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 text-[13px] leading-snug text-white/80"
+                        >
+                          <HighlightIcon
+                            className="mt-0.5 h-3.5 w-3.5 shrink-0 text-orange-400"
+                            strokeWidth={1.75}
+                          />
+                          {h.text}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ) : (
