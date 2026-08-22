@@ -1982,74 +1982,104 @@ export default function Samoa() {
       </div>
 
       {/* ------------------------------------------------------------ */}
-      {/* Village hover badge -- follows the cursor                    */}
+      {/* Village hover tooltip -- follows the cursor                  */}
       {/* ------------------------------------------------------------ */}
       {hoveredDistrict && !selectedDistrict && (
         <div
-          className="pointer-events-none fixed z-40 rounded-lg border border-white/10 bg-[#0e0f16] px-3 py-1.5 text-[12px] font-medium text-white shadow-xl"
+          className="pointer-events-none fixed z-40 flex items-center gap-2 rounded-lg border border-white/10 bg-[#0e0f16]/95 px-3 py-2 text-[12px] shadow-xl backdrop-blur"
           style={{ left: mousePos.x + 16, top: mousePos.y + 16 }}
         >
-          {getVillageInfo(hoveredDistrict).name}
+          <span className="font-semibold text-white">
+            {getVillageInfo(hoveredDistrict).name}
+          </span>
+          <span className="text-white/40">
+            {VILLAGES[hoveredDistrict]
+              ? `${getVillageInfo(hoveredDistrict).highlights.length} tracked`
+              : "nothing tracked yet"}
+          </span>
         </div>
       )}
 
       {/* ------------------------------------------------------------ */}
-      {/* Village detail modal -- opens on click                       */}
+      {/* Village detail sidebar -- opens on click                     */}
       {/* ------------------------------------------------------------ */}
       {selectedDistrict &&
         (() => {
           const info = getVillageInfo(selectedDistrict);
+          const hasData = info.highlights.length > 0;
           return (
-            <div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
-              onClick={() => setSelectedDistrict(null)}
-            >
-              <div
-                className="w-[360px] max-w-[90vw] rounded-2xl border border-white/10 bg-[#12141c] p-5 shadow-2xl"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h2 className="text-[16px] font-semibold text-white">
-                      {info.name}
-                    </h2>
-                    {info.population && (
-                      <p className="mt-0.5 text-[12px] text-white/50">
-                        Population {info.population}
-                      </p>
-                    )}
-                  </div>
-                  <button
-                    onClick={() => setSelectedDistrict(null)}
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/50 hover:bg-white/10 hover:text-white"
-                    aria-label="Close"
+            <div className="fixed inset-y-0 right-0 z-50 w-[380px] max-w-[92vw] overflow-y-auto border-l border-white/10 bg-[#12141c]/97 shadow-2xl backdrop-blur">
+              <div className="flex items-start justify-between gap-3 p-5 pb-0">
+                <div className="flex items-center gap-2">
+                  <span className="rounded-full border border-white/15 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-white/60">
+                    VILLAGE
+                  </span>
+                  <span
+                    className={`rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide ${
+                      hasData
+                        ? "bg-emerald-500/15 text-emerald-400"
+                        : "bg-white/10 text-white/40"
+                    }`}
                   >
-                    <Minus className="h-3.5 w-3.5 rotate-45" />
-                  </button>
+                    {hasData ? "TRACKED" : "NO DATA YET"}
+                  </span>
                 </div>
+                <button
+                  onClick={() => setSelectedDistrict(null)}
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/50 hover:bg-white/10 hover:text-white"
+                  aria-label="Close"
+                >
+                  <Minus className="h-3.5 w-3.5 rotate-45" />
+                </button>
+              </div>
 
-                <p className="mt-3 text-[13px] leading-snug text-white/75">
+              <div className="px-5 pt-3">
+                <h2 className="text-[19px] font-semibold leading-snug text-white">
+                  {info.name}
+                </h2>
+                {info.population && (
+                  <p className="mt-1 text-[12px] text-white/45">
+                    Population {info.population}
+                  </p>
+                )}
+              </div>
+
+              <div className="px-5 pt-4">
+                <p className="text-[13px] leading-relaxed text-white/75">
                   {info.summary}
                 </p>
+              </div>
 
-                {info.highlights.length > 0 && (
-                  <div className="mt-4">
-                    <div className="text-[10px] font-semibold tracking-wide text-white/40">
-                      DEVELOPMENT HIGHLIGHTS
-                    </div>
-                    <ul className="mt-2 space-y-1.5">
-                      {info.highlights.map((h, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-2 text-[13px] text-white/80"
-                        >
-                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-orange-400" />
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
+              {hasData ? (
+                <div className="mx-5 mt-5 rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                  <div className="text-[10px] font-semibold tracking-wide text-white/40">
+                    DEVELOPMENT HIGHLIGHTS
                   </div>
-                )}
+                  <ul className="mt-2.5 space-y-2">
+                    {info.highlights.map((h, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-[13px] leading-snug text-white/80"
+                      >
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-orange-400" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <div className="mx-5 mt-5 rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                  <p className="text-[13px] leading-relaxed text-white/50">
+                    The pipeline hasn&apos;t found anything here yet. That is
+                    an absence of coverage, not an absence of progress.
+                  </p>
+                </div>
+              )}
+
+              <div className="px-5 pb-6 pt-5">
+                <div className="text-[11px] text-white/35">
+                  data-district: {selectedDistrict}
+                </div>
               </div>
             </div>
           );
