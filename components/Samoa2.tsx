@@ -2629,7 +2629,7 @@ export default function Samoa() {
       {/* ------------------------------------------------------------ */}
       {/* Village hover tooltip -- follows the cursor                  */}
       {/* ------------------------------------------------------------ */}
-      {hoveredDistrict && !selectedDistrict && (
+      {hoveredDistrict && (
         <div
           className="pointer-events-none fixed z-40 flex items-center gap-2 rounded-lg border border-white/10 bg-[#0e0f16]/95 px-3 py-2 text-[12px] shadow-xl backdrop-blur"
           style={{ left: mousePos.x + 16, top: mousePos.y + 16 }}
