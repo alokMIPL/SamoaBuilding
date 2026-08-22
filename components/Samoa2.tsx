@@ -76,16 +76,663 @@ type VillageInfo = {
 };
 
 const VILLAGES: Record<string, VillageInfo> = {
-  // Example -- replace with real villages once ids are matched:
-  // v42: {
-  //   name: "Pago Pago",
-  //   population: "\u2248 3,500",
-  //   summary: "Harbor village and the territory's commercial hub.",
-  //   highlights: [
-  //     "Pago Pago Harbor upgrade underway",
-  //     "Deep-water port serves the tuna canning industry",
-  //   ],
-  // },
+  v95: {
+    name: "Aunu'u",
+    summary:
+      "Small volcanic island off Tutuila's eastern tip, reached by boat from Auasi.",
+    highlights: [],
+  },
+  v42: {
+    name: "Pago Pago",
+    population: "\u2248 3,500",
+    summary: "Harbor village and the territory's commercial hub.",
+    highlights: [
+      "Pago Pago Harbor upgrade underway",
+      "Deep-water port serves the tuna canning industry",
+    ],
+  },
+  v1: {
+    name: "Aasu",
+    summary:
+      "Village in the Western district (Leasina county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v2: {
+    name: "Afao",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v3: {
+    name: "Afono",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v4: {
+    name: "Agugulu",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v5: {
+    name: "Alao",
+    summary:
+      "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v6: {
+    name: "Alega",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v7: {
+    name: "Alofau",
+    summary:
+      "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v8: {
+    name: "Amaluia",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v9: {
+    name: "Amanave",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v10: {
+    name: "Amaua",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v11: {
+    name: "Amouli",
+    summary:
+      "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v12: {
+    name: "Anua",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v13: {
+    name: "Aoa",
+    summary:
+      "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v14: {
+    name: "Aoloau",
+    summary:
+      "Village in the Western district (Leasina county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v15: {
+    name: "Asili",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v16: {
+    name: "Atu'u",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v17: {
+    name: "Au'asi",
+    summary:
+      "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v18: {
+    name: "Aua",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v19: {
+    name: "Auma",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v20: {
+    name: "Aumi",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v21: {
+    name: "Aunu'u",
+    summary:
+      "Village in the Eastern district (Sa'ole county), on Aunu'u. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v22: {
+    name: "Auto",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v23: {
+    name: "Avaio",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v24: {
+    name: "Faga'alu",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v25: {
+    name: "Faga'itua",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v26: {
+    name: "Fagali'i",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v27: {
+    name: "Fagamalo",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v28: {
+    name: "Faganeanea",
+    summary:
+      "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v29: {
+    name: "Fagasa",
+    summary:
+      "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v30: {
+    name: "Fagatogo",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v31: {
+    name: "Failolo",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v32: {
+    name: "Faleasao",
+    summary:
+      "Village in the Manu'a district (Faleasao county), on Ta'u. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v33: {
+    name: "Faleniu",
+    summary:
+      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v34: {
+    name: "Fatumafuti",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v35: {
+    name: "Futiga",
+    summary:
+      "Village in the Western district (Tualatai county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v36: {
+    name: "Ili'ili",
+    summary:
+      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v37: {
+    name: "Lauli'i",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v38: {
+    name: "Leloaloa",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v39: {
+    name: "Leone",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v40: {
+    name: "Leusoali'i",
+    summary:
+      "Village in the Manu'a district (Fitiuta county), on Ta'u. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v41: {
+    name: "Luma",
+    summary:
+      "Village in the Manu'a district (Ta'u county), on Ta'u. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v43: {
+    name: "Maia",
+    summary:
+      "Village in the Manu'a district (Fitiuta county), on Ta'u. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v44: {
+    name: "Malaeimi",
+    summary:
+      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v45: {
+    name: "Malaeloa/Aitulagi",
+    summary:
+      "Village in the Western district (Leasina county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v46: {
+    name: "Malaeloa/Ituau",
+    summary:
+      "Village in the Western district (Tualatai county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v47: {
+    name: "Maloata",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v48: {
+    name: "Mapusagafou",
+    summary:
+      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v49: {
+    name: "Masausi",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v50: {
+    name: "Masefau",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v51: {
+    name: "Matu'u",
+    summary:
+      "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v52: {
+    name: "Mesepa",
+    summary:
+      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v53: {
+    name: "Nu'uuli",
+    summary:
+      "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v54: {
+    name: "Nua",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v55: {
+    name: "Ofu",
+    summary:
+      "Village in the Manu'a district (Ofu county), on Ofu. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v56: {
+    name: "Olosega",
+    summary:
+      "Village in the Manu'a district (Olosega county), on Olosega. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v57: {
+    name: "Onenoa",
+    summary:
+      "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v58: {
+    name: "Pagai",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v59: {
+    name: "Pago Pago",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v60: {
+    name: "Pava'ia'i",
+    summary:
+      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v61: {
+    name: "Poloa",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v62: {
+    name: "Rose",
+    summary:
+      "Located on Rose Atoll. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v63: {
+    name: "Sa'ilele",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v64: {
+    name: "Satala",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v65: {
+    name: "Se'etaga",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v66: {
+    name: "Si'ufaga",
+    summary:
+      "Village in the Manu'a district (Ta'u county), on Ta'u. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v67: {
+    name: "Sili",
+    summary:
+      "Village in the Manu'a district (Olosega county), on Olosega. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v68: {
+    name: "Swains",
+    summary:
+      "Located on Swains Island. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v69: {
+    name: "Tafuna",
+    summary:
+      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v70: {
+    name: "Taputimu",
+    summary:
+      "Village in the Western district (Tualatai county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v71: {
+    name: "Tula",
+    summary:
+      "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v72: {
+    name: "Utulei",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v73: {
+    name: "Utumea East",
+    summary:
+      "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v74: {
+    name: "Utumea West",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v75: {
+    name: "Utusia",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v76: {
+    name: "Vailoatai",
+    summary:
+      "Village in the Western district (Tualatai county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v77: {
+    name: "Vaitogi",
+    summary:
+      "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v78: {
+    name: "Vatia",
+    summary:
+      "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v79: {
+    name: "Aasu",
+    summary:
+      "Village in the Western district (Leasina county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v80: {
+    name: "Afao",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v81: {
+    name: "Afono",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v82: {
+    name: "Agugulu",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v83: {
+    name: "Alao",
+    summary:
+      "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v84: {
+    name: "Alega",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v85: {
+    name: "Alofau",
+    summary:
+      "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v86: {
+    name: "Amaluia",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v87: {
+    name: "Amanave",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v88: {
+    name: "Amaua",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v89: {
+    name: "Amouli",
+    summary:
+      "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v90: {
+    name: "Anua",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v91: {
+    name: "Aoa",
+    summary:
+      "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v92: {
+    name: "Aoloau",
+    summary:
+      "Village in the Western district (Leasina county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v93: {
+    name: "Asili",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v94: {
+    name: "Atu'u",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v96: {
+    name: "Au'asi",
+    summary:
+      "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v97: {
+    name: "Aua",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v98: {
+    name: "Auma",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v99: {
+    name: "Aumi",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v100: {
+    name: "Aunu'u",
+    summary:
+      "Village in the Eastern district (Sa'ole county), on Aunu'u. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v101: {
+    name: "Auto",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v102: {
+    name: "Avaio",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v103: {
+    name: "Faga'alu",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v104: {
+    name: "Faga'itua",
+    summary:
+      "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v105: {
+    name: "Fagali'i",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v106: {
+    name: "Fagamalo",
+    summary:
+      "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v107: {
+    name: "Faganeanea",
+    summary:
+      "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v108: {
+    name: "Fagasa",
+    summary:
+      "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
+  v109: {
+    name: "Fagatogo",
+    summary:
+      "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
+    highlights: [],
+  },
 };
 
 function getVillageInfo(id: string): VillageInfo {
@@ -307,9 +954,7 @@ export default function Samoa() {
   const [active, setActive] = useState("all");
   const [hovered, setHovered] = useState<string | null>(null);
   const [zoom, setZoom] = useState(100);
-  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(
-    null,
-  );
+  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -2070,8 +2715,8 @@ export default function Samoa() {
               ) : (
                 <div className="mx-5 mt-5 rounded-xl border border-white/10 bg-white/[0.03] p-4">
                   <p className="text-[13px] leading-relaxed text-white/50">
-                    The pipeline hasn&apos;t found anything here yet. That is
-                    an absence of coverage, not an absence of progress.
+                    The pipeline hasn&apos;t found anything here yet. That is an
+                    absence of coverage, not an absence of progress.
                   </p>
                 </div>
               )}
