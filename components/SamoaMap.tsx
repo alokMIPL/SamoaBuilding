@@ -1830,7 +1830,7 @@ export default function SamoaMap() {
                 <span
                   className={`h-4 w-0.5 rounded-full ${isActive ? "bg-orange-400" : "bg-transparent"}`}
                 />
-                <Icon className="h-4 w-4 shrink-0" strokeWidth={1.75} />
+                <Icon className="h-5 w-5 shrink-0" strokeWidth={1.75} />
                 <span
                   className={`flex-1 truncate ${isActive ? "font-medium" : ""}`}
                 >
@@ -3475,7 +3475,7 @@ export default function SamoaMap() {
           const info = getVillageInfo(selectedDistrict);
           const hasData = info.highlights.length > 0;
           return (
-            <div className="fixed inset-y-0 right-0 z-50 w-[380px] max-w-[92vw] overflow-y-auto border-l border-white/10 bg-[#12141c]/97 shadow-2xl backdrop-blur">
+            <div className="fixed inset-y-0 right-0 z-50 w-[380px] max-w-[82vw] overflow-y-auto border-l border-white/10 bg-[#12141c]/97 shadow-2xl backdrop-blur">
               <div className="flex items-start justify-between gap-3 p-5 pb-0">
                 <div className="flex items-center gap-2">
                   <span className="rounded-full border border-white/15 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-white/60">
@@ -3493,7 +3493,7 @@ export default function SamoaMap() {
                 </div>
                 <button
                   onClick={() => setSelectedDistrict(null)}
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/50 hover:bg-white/10 hover:text-white"
+                  className="flex cursor-pointer h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/50 hover:bg-white/10 hover:text-white"
                   aria-label="Close"
                 >
                   <X className="h-6 w-6" />
@@ -3611,12 +3611,12 @@ export default function SamoaMap() {
           onClick={() => setShowContributeForm(false)}
         >
           <div
-            className="w-full max-w-[420px] rounded-2xl border border-white/10 bg-[#15161d] p-6 shadow-2xl"
+            className="w-full max-w-[600px] rounded-2xl border border-white/10 bg-[#15161d] p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-3">
               <div>
-                <h2 className="text-[17px] font-semibold text-white">
+                <h2 className="text-[20px] font-semibold text-white">
                   Found something American Samoa is building?
                 </h2>
                 <p className="mt-1.5 text-[12.5px] leading-snug text-white/50">
@@ -3626,10 +3626,10 @@ export default function SamoaMap() {
               </div>
               <button
                 onClick={() => setShowContributeForm(false)}
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/50 hover:bg-white/10 hover:text-white"
+                className="flex cursor-pointer h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/50 hover:bg-white/10 hover:text-white"
                 aria-label="Close"
               >
-                <X className="h-4 w-4" />
+                <X className="h-6 w-6" />
               </button>
             </div>
 
@@ -3797,7 +3797,7 @@ export default function SamoaMap() {
           onClick={closeReportModal}
         >
           <div
-            className="w-full max-w-[380px] rounded-2xl border border-white/10 bg-[#15161d] p-6 shadow-2xl"
+            className="w-full max-w-[600px] rounded-2xl border border-white/10 bg-[#15161d] p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-3">
@@ -3811,10 +3811,10 @@ export default function SamoaMap() {
               </div>
               <button
                 onClick={closeReportModal}
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/50 hover:bg-white/10 hover:text-white"
+                className="flex cursor-pointer h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/50 hover:bg-white/10 hover:text-white"
                 aria-label="Close"
               >
-                <X className="h-4 w-4" />
+                <X className="h-6 w-6" />
               </button>
             </div>
 
