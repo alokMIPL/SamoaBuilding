@@ -25,6 +25,7 @@ import {
   Fish,
   Palmtree,
   X,
+  ExternalLink,
 } from "lucide-react";
 
 // ---------------------------------------------------------------------------
@@ -63,6 +64,18 @@ const CATEGORIES = [
 
 const CATEGORY_LOOKUP = Object.fromEntries(CATEGORIES.map((c) => [c.id, c]));
 
+// Reasons available when reporting a problem with a single highlight/event.
+const REPORT_REASONS = [
+  { id: "better-source", label: "Better source available" },
+  { id: "wrong-info", label: "Wrong information" },
+  { id: "wrong-location", label: "Wrong location" },
+  { id: "wrong-category", label: "Wrong category" },
+  { id: "wrong-status", label: "Wrong project status" },
+  { id: "duplicate", label: "Duplicate event" },
+  { id: "outdated", label: "Outdated information" },
+  { id: "something-else", label: "Something else" },
+];
+
 // ---------------------------------------------------------------------------
 // Village / district info
 // ---------------------------------------------------------------------------
@@ -77,6 +90,9 @@ type VillageHighlight = {
   text: string;
   // Matches a CATEGORIES[].id so the right icon renders next to it.
   category: string;
+  // Optional citation for this specific highlight. When absent, the sidebar
+  // shows "No source linked yet" instead of a link.
+  source?: { label: string; url: string };
 };
 
 type VillageInfo = {
@@ -592,7 +608,16 @@ const VILLAGES: Record<string, VillageInfo> = {
   v48: {
     name: "Mapusagafou",
     summary: "Village in the Western district (Tualauta county), on Tutuila.",
-    highlights: [{ text: "ASCC tech hub", category: "ai" }],
+    highlights: [
+      {
+        text: "ASCC tech hub",
+        category: "ai",
+        source: {
+          label: "ASCC press release",
+          url: "https://www.amsamoacc.edu",
+        },
+      },
+    ],
   },
   v49: {
     name: "Masausi",
@@ -1662,6 +1687,37 @@ export default function SamoaMap() {
     name: "",
     handle: "",
   });
+
+  // "Have a better source? / Suggest correction" report modal, scoped to a
+  // single highlight within the currently open village sidebar.
+  const [reportTarget, setReportTarget] = useState<{
+    villageName: string;
+    highlight: VillageHighlight;
+  } | null>(null);
+  const [reportForm, setReportForm] = useState({
+    reason: "better-source",
+    betterSource: "",
+    whatsWrong: "",
+    handle: "",
+  });
+
+  function openReportModal(
+    villageName: string,
+    highlight: VillageHighlight,
+    reason: string,
+  ) {
+    setReportTarget({ villageName, highlight });
+    setReportForm({
+      reason,
+      betterSource: "",
+      whatsWrong: "",
+      handle: "",
+    });
+  }
+
+  function closeReportModal() {
+    setReportTarget(null);
+  }
 
   const RANGE_MAX_DAYS: Record<"today" | "48h" | "all", number> = {
     today: 0,
@@ -3466,20 +3522,63 @@ export default function SamoaMap() {
                   <div className="text-[10px] font-semibold tracking-wide text-white/40">
                     DEVELOPMENT HIGHLIGHTS
                   </div>
-                  <ul className="mt-2.5 space-y-2">
+                  <ul className="mt-2.5 space-y-4">
                     {info.highlights.map((h, i) => {
                       const HighlightIcon =
                         CATEGORY_LOOKUP[h.category]?.icon ?? Compass;
                       return (
                         <li
                           key={i}
-                          className="flex items-start gap-2 text-[13px] leading-snug text-white/80"
+                          className="text-[13px] leading-snug text-white/80"
                         >
-                          <HighlightIcon
-                            className="mt-0.5 h-3.5 w-3.5 shrink-0 text-orange-400"
-                            strokeWidth={1.75}
-                          />
-                          {h.text}
+                          <div className="flex items-start gap-2">
+                            <HighlightIcon
+                              className="mt-0.5 h-3.5 w-3.5 shrink-0 text-orange-400"
+                              strokeWidth={1.75}
+                            />
+                            <span>{h.text}</span>
+                          </div>
+
+                          <div className="ml-[22px] mt-2">
+                            <div className="text-[10px] font-semibold tracking-wide text-white/40">
+                              SOURCE
+                            </div>
+                            {h.source ? (
+                              <a
+                                href={h.source.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-1 inline-flex items-center gap-1 text-[13px] font-medium text-sky-400 hover:underline"
+                              >
+                                {h.source.label}
+                                <ExternalLink className="h-3 w-3" />
+                              </a>
+                            ) : (
+                              <div className="mt-1 text-[13px] text-white/35">
+                                No source linked yet
+                              </div>
+                            )}
+
+                            <div className="mt-1.5 flex items-center gap-1.5 text-[11.5px] text-white/45">
+                              <button
+                                onClick={() =>
+                                  openReportModal(info.name, h, "better-source")
+                                }
+                                className="hover:text-white hover:underline"
+                              >
+                                Have a better source?
+                              </button>
+                              <span>&middot;</span>
+                              <button
+                                onClick={() =>
+                                  openReportModal(info.name, h, "wrong-info")
+                                }
+                                className="hover:text-white hover:underline"
+                              >
+                                Suggest correction
+                              </button>
+                            </div>
+                          </div>
                         </li>
                       );
                     })}
@@ -3682,6 +3781,140 @@ export default function SamoaMap() {
                   className="rounded-lg bg-sky-500/90 px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-sky-500"
                 >
                   Send for verification
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* ------------------------------------------------------------ */}
+      {/* Per-highlight "report a problem" modal                        */}
+      {/* ------------------------------------------------------------ */}
+      {reportTarget && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+          onClick={closeReportModal}
+        >
+          <div
+            className="w-full max-w-[380px] rounded-2xl border border-white/10 bg-[#15161d] p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h2 className="text-[17px] font-semibold leading-snug text-white">
+                  Something wrong with this event?
+                </h2>
+                <p className="mt-1.5 text-[12.5px] text-white/50">
+                  We&apos;ll verify before changing anything.
+                </p>
+              </div>
+              <button
+                onClick={closeReportModal}
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white/50 hover:bg-white/10 hover:text-white"
+                aria-label="Close"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            <form
+              className="mt-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                // TODO: wire this up to your submission endpoint.
+                console.log("Report submitted", {
+                  village: reportTarget.villageName,
+                  highlight: reportTarget.highlight.text,
+                  ...reportForm,
+                });
+                closeReportModal();
+              }}
+            >
+              <div className="flex flex-wrap gap-2">
+                {REPORT_REASONS.map((r) => {
+                  const isActive = reportForm.reason === r.id;
+                  return (
+                    <button
+                      key={r.id}
+                      type="button"
+                      onClick={() =>
+                        setReportForm((f) => ({ ...f, reason: r.id }))
+                      }
+                      className={`rounded-full px-3 py-1.5 text-[12.5px] font-medium transition-colors ${
+                        isActive
+                          ? "bg-sky-500 text-white"
+                          : "bg-white/[0.06] text-white/70 hover:bg-white/10"
+                      }`}
+                    >
+                      {r.label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="mt-4">
+                <label className="text-[10px] font-semibold tracking-wide text-white/40">
+                  BETTER SOURCE
+                </label>
+                <input
+                  type="text"
+                  value={reportForm.betterSource}
+                  onChange={(e) =>
+                    setReportForm((f) => ({
+                      ...f,
+                      betterSource: e.target.value,
+                    }))
+                  }
+                  placeholder="Paste a more authoritative link"
+                  className="mt-1.5 w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-[13px] text-white placeholder:text-white/30 outline-none focus:border-sky-400/50"
+                />
+              </div>
+
+              <div className="mt-4">
+                <label className="text-[10px] font-semibold tracking-wide text-white/40">
+                  WHAT&apos;S WRONG?{" "}
+                  <span className="normal-case">optional</span>
+                </label>
+                <textarea
+                  value={reportForm.whatsWrong}
+                  onChange={(e) =>
+                    setReportForm((f) => ({
+                      ...f,
+                      whatsWrong: e.target.value,
+                    }))
+                  }
+                  placeholder="Briefly, what should we fix?"
+                  rows={3}
+                  className="mt-1.5 w-full resize-none rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-[13px] text-white placeholder:text-white/30 outline-none focus:border-sky-400/50"
+                />
+              </div>
+
+              <div className="mt-4">
+                <input
+                  type="text"
+                  value={reportForm.handle}
+                  onChange={(e) =>
+                    setReportForm((f) => ({ ...f, handle: e.target.value }))
+                  }
+                  placeholder="@yourhandle (optional)"
+                  className="w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-[13px] text-white placeholder:text-white/30 outline-none focus:border-sky-400/50"
+                />
+              </div>
+
+              <div className="flex items-center justify-end gap-4 pt-4">
+                <button
+                  type="button"
+                  onClick={closeReportModal}
+                  className="text-[13px] font-medium text-white/50 hover:text-white"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="rounded-lg bg-sky-500/90 px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-sky-500"
+                >
+                  Send report
                 </button>
               </div>
             </form>
