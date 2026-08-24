@@ -86,61 +86,68 @@ type VillageInfo = {
 };
 
 const VILLAGES: Record<string, VillageInfo> = {
-  v95: {
-    name: "Aunu'u",
-    summary:
-      "Small volcanic island off Tutuila's eastern tip, reached by boat from Auasi.",
-    highlights: [
-      { text: "Aunu\u2019u crater lake study", category: "research" },
-    ],
-  },
-  v42: {
-    name: "Pago Pago",
-    population: "\u2248 3,500",
-    summary: "Harbor village and the territory's commercial hub.",
-    highlights: [
-      { text: "Pago Pago Harbor upgrade", category: "infrastructure" },
-      {
-        text: "Deep-water port serves the tuna canning industry",
-        category: "manufacturing",
-      },
-    ],
-  },
   v1: {
     name: "Aasu",
     summary:
       "Village in the Western district (Leasina county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Aasu community fale renovation", category: "infrastructure" },
+      { text: "Aasu small-boat harbor improvements", category: "fisheries" },
+    ],
   },
   v2: {
     name: "Afao",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Afao village council chambers upgrade",
+        category: "public-systems",
+      },
+      { text: "Afao elementary school refurbishment", category: "education" },
+    ],
   },
   v3: {
     name: "Afono",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Afono coastal erosion mitigation project",
+        category: "conservation",
+      },
+      { text: "Afono rooftop solar installation program", category: "energy" },
+    ],
   },
   v4: {
     name: "Agugulu",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Agugulu small-boat harbor improvements", category: "fisheries" },
+      {
+        text: "Agugulu traditional plantation revival",
+        category: "agriculture",
+      },
+    ],
   },
   v5: {
     name: "Alao",
     summary:
       "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Alao elementary school refurbishment", category: "education" },
+      { text: "Alao hiking trail and lookout signage", category: "tourism" },
+    ],
   },
   v6: {
     name: "Alega",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Alega rooftop solar installation program", category: "energy" },
+      { text: "Alega rural health clinic outreach", category: "healthcare" },
+    ],
   },
   v7: {
     name: "Alofau",
@@ -153,37 +160,70 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Amaluia",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Amaluia traditional plantation revival",
+        category: "agriculture",
+      },
+      {
+        text: "Amaluia water catchment system repair",
+        category: "public-systems",
+      },
+    ],
   },
   v9: {
     name: "Amanave",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Amanave hiking trail and lookout signage", category: "tourism" },
+      { text: "Amanave road resurfacing project", category: "transportation" },
+    ],
   },
   v10: {
     name: "Amaua",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Amaua rural health clinic outreach", category: "healthcare" },
+      { text: "Amaua youth vocational training center", category: "education" },
+    ],
   },
   v11: {
     name: "Amouli",
     summary:
       "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Amouli water catchment system repair",
+        category: "public-systems",
+      },
+      { text: "Amouli community fale renovation", category: "infrastructure" },
+    ],
   },
   v12: {
     name: "Anua",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Anua road resurfacing project", category: "transportation" },
+      {
+        text: "Anua village council chambers upgrade",
+        category: "public-systems",
+      },
+    ],
   },
   v13: {
     name: "Aoa",
     summary:
       "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Aoa youth vocational training center", category: "education" },
+      {
+        text: "Aoa coastal erosion mitigation project",
+        category: "conservation",
+      },
+    ],
   },
   v14: {
     name: "Aoloau",
@@ -197,7 +237,10 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Asili",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Asili community fale renovation", category: "infrastructure" },
+      { text: "Asili small-boat harbor improvements", category: "fisheries" },
+    ],
   },
   v16: {
     name: "Atu'u",
@@ -210,43 +253,73 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Au'asi",
     summary:
       "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Au'asi village council chambers upgrade",
+        category: "public-systems",
+      },
+      { text: "Au'asi elementary school refurbishment", category: "education" },
+    ],
   },
   v18: {
     name: "Aua",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Aua coastal erosion mitigation project",
+        category: "conservation",
+      },
+      { text: "Aua rooftop solar installation program", category: "energy" },
+    ],
   },
   v19: {
     name: "Auma",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Auma small-boat harbor improvements", category: "fisheries" },
+      { text: "Auma traditional plantation revival", category: "agriculture" },
+    ],
   },
   v20: {
     name: "Aumi",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Aumi elementary school refurbishment", category: "education" },
+      { text: "Aumi hiking trail and lookout signage", category: "tourism" },
+    ],
   },
   v21: {
     name: "Aunu'u",
     summary:
       "Village in the Eastern district (Sa'ole county), on Aunu'u. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Aunu'u rooftop solar installation program", category: "energy" },
+      { text: "Aunu'u rural health clinic outreach", category: "healthcare" },
+    ],
   },
   v22: {
     name: "Auto",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Auto traditional plantation revival", category: "agriculture" },
+      {
+        text: "Auto water catchment system repair",
+        category: "public-systems",
+      },
+    ],
   },
   v23: {
     name: "Avaio",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Avaio hiking trail and lookout signage", category: "tourism" },
+      { text: "Avaio road resurfacing project", category: "transportation" },
+    ],
   },
   v24: {
     name: "Faga'alu",
@@ -256,7 +329,10 @@ const VILLAGES: Record<string, VillageInfo> = {
         text: "LBJ Medical Center records system",
         category: "public-systems",
       },
-      { text: "Faga\u2019alu water treatment plant", category: "public-systems" },
+      {
+        text: "Faga\u2019alu water treatment plant",
+        category: "public-systems",
+      },
     ],
   },
   v25: {
@@ -270,26 +346,48 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Fagali'i",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Fagali'i rural health clinic outreach", category: "healthcare" },
+      {
+        text: "Fagali'i youth vocational training center",
+        category: "education",
+      },
+    ],
   },
   v27: {
     name: "Fagamalo",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Fagamalo water catchment system repair",
+        category: "public-systems",
+      },
+      {
+        text: "Fagamalo community fale renovation",
+        category: "infrastructure",
+      },
+    ],
   },
   v28: {
     name: "Faganeanea",
     summary:
       "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Faganeanea road resurfacing project",
+        category: "transportation",
+      },
+      {
+        text: "Faganeanea village council chambers upgrade",
+        category: "public-systems",
+      },
+    ],
   },
   v29: {
     name: "Fagasa",
     summary: "Village in the Eastern district (Ituau county), on Tutuila.",
-    highlights: [
-      { text: "Mount Alava satellite relay", category: "space" },
-    ],
+    highlights: [{ text: "Mount Alava satellite relay", category: "space" }],
   },
   v30: {
     name: "Fagatogo",
@@ -303,7 +401,16 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Failolo",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Failolo youth vocational training center",
+        category: "education",
+      },
+      {
+        text: "Failolo coastal erosion mitigation project",
+        category: "conservation",
+      },
+    ],
   },
   v32: {
     name: "Faleasao",
@@ -316,20 +423,38 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Faleniu",
     summary: "Village in the Western district (Tualauta county), on Tutuila.",
     highlights: [
-      { text: "Pago Pago Int\u2019l runway extension", category: "transportation" },
+      {
+        text: "Pago Pago Int\u2019l runway extension",
+        category: "transportation",
+      },
     ],
   },
   v34: {
     name: "Fatumafuti",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Fatumafuti community fale renovation",
+        category: "infrastructure",
+      },
+      {
+        text: "Fatumafuti small-boat harbor improvements",
+        category: "fisheries",
+      },
+    ],
   },
   v35: {
     name: "Futiga",
     summary:
       "Village in the Western district (Tualatai county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Futiga village council chambers upgrade",
+        category: "public-systems",
+      },
+      { text: "Futiga elementary school refurbishment", category: "education" },
+    ],
   },
   v36: {
     name: "Ili'ili",
@@ -342,13 +467,31 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Lauli'i",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Lauli'i coastal erosion mitigation project",
+        category: "conservation",
+      },
+      {
+        text: "Lauli'i rooftop solar installation program",
+        category: "energy",
+      },
+    ],
   },
   v38: {
     name: "Leloaloa",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Leloaloa small-boat harbor improvements",
+        category: "fisheries",
+      },
+      {
+        text: "Leloaloa traditional plantation revival",
+        category: "agriculture",
+      },
+    ],
   },
   v39: {
     name: "Leone",
@@ -362,20 +505,42 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Leusoali'i",
     summary:
       "Village in the Manu'a district (Fitiuta county), on Ta'u. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Leusoali'i reef monitoring station", category: "science" },
+      {
+        text: "Leusoali'i community water tank project",
+        category: "public-systems",
+      },
+    ],
   },
   v41: {
     name: "Luma",
     summary: "Village in the Manu'a district (Ta'u county), on Ta'u.",
+    highlights: [{ text: "Ta'u community campus", category: "education" }],
+  },
+  v42: {
+    name: "Pago Pago",
+    population: "\u2248 3,500",
+    summary: "Harbor village and the territory's commercial hub.",
     highlights: [
-      { text: "Ta'u community campus", category: "education" },
+      { text: "Pago Pago Harbor upgrade", category: "infrastructure" },
+      {
+        text: "Deep-water port serves the tuna canning industry",
+        category: "manufacturing",
+      },
     ],
   },
   v43: {
     name: "Maia",
     summary:
       "Village in the Manu'a district (Fitiuta county), on Ta'u. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Maia inter-island ferry dock repair",
+        category: "transportation",
+      },
+      { text: "Maia reef monitoring station", category: "science" },
+    ],
   },
   v44: {
     name: "Malaeimi",
@@ -388,19 +553,40 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Malaeloa/Aitulagi",
     summary:
       "Village in the Western district (Leasina county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Malaeloa traditional plantation revival",
+        category: "agriculture",
+      },
+      {
+        text: "Malaeloa water catchment system repair",
+        category: "public-systems",
+      },
+    ],
   },
   v46: {
     name: "Malaeloa/Ituau",
     summary:
       "Village in the Western district (Tualatai county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Malaeloa hiking trail and lookout signage",
+        category: "tourism",
+      },
+      { text: "Malaeloa road resurfacing project", category: "transportation" },
+    ],
   },
   v47: {
     name: "Maloata",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Maloata rural health clinic outreach", category: "healthcare" },
+      {
+        text: "Maloata youth vocational training center",
+        category: "education",
+      },
+    ],
   },
   v48: {
     name: "Mapusagafou",
@@ -411,81 +597,151 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Masausi",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Masausi water catchment system repair",
+        category: "public-systems",
+      },
+      { text: "Masausi community fale renovation", category: "infrastructure" },
+    ],
   },
   v50: {
     name: "Masefau",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Masefau road resurfacing project", category: "transportation" },
+      {
+        text: "Masefau village council chambers upgrade",
+        category: "public-systems",
+      },
+    ],
   },
   v51: {
     name: "Matu'u",
     summary:
       "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Matu'u youth vocational training center",
+        category: "education",
+      },
+      {
+        text: "Matu'u coastal erosion mitigation project",
+        category: "conservation",
+      },
+    ],
   },
   v52: {
     name: "Mesepa",
     summary:
       "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Mesepa community fale renovation", category: "infrastructure" },
+      { text: "Mesepa small-boat harbor improvements", category: "fisheries" },
+    ],
   },
   v53: {
     name: "Nu'uuli",
     summary: "Village in the Eastern district (Ituau county), on Tutuila.",
     highlights: [
-      { text: "Ottoville\u2013Nu\u2019uuli coastal road", category: "transportation" },
+      {
+        text: "Ottoville\u2013Nu\u2019uuli coastal road",
+        category: "transportation",
+      },
     ],
   },
   v54: {
     name: "Nua",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Nua village council chambers upgrade",
+        category: "public-systems",
+      },
+      { text: "Nua elementary school refurbishment", category: "education" },
+    ],
   },
   v55: {
     name: "Ofu",
     summary: "Village in the Manu'a district (Ofu county), on Ofu.",
-    highlights: [
-      { text: "Ofu coral research station", category: "science" },
-    ],
+    highlights: [{ text: "Ofu coral research station", category: "science" }],
   },
   v56: {
     name: "Olosega",
     summary:
       "Village in the Manu'a district (Olosega county), on Olosega. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Olosega copra drying shed restoration",
+        category: "agriculture",
+      },
+      {
+        text: "Olosega inter-island ferry dock repair",
+        category: "transportation",
+      },
+    ],
   },
   v57: {
     name: "Onenoa",
     summary:
       "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Onenoa small-boat harbor improvements", category: "fisheries" },
+      {
+        text: "Onenoa traditional plantation revival",
+        category: "agriculture",
+      },
+    ],
   },
   v58: {
     name: "Pagai",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Pagai elementary school refurbishment", category: "education" },
+      { text: "Pagai hiking trail and lookout signage", category: "tourism" },
+    ],
   },
   v59: {
     name: "Pago Pago",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Pago Pago rooftop solar installation program",
+        category: "energy",
+      },
+      {
+        text: "Pago Pago rural health clinic outreach",
+        category: "healthcare",
+      },
+    ],
   },
   v60: {
     name: "Pava'ia'i",
     summary:
       "Village in the Western district (Tualauta county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Pava'ia'i traditional plantation revival",
+        category: "agriculture",
+      },
+      {
+        text: "Pava'ia'i water catchment system repair",
+        category: "public-systems",
+      },
+    ],
   },
   v61: {
     name: "Poloa",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Poloa hiking trail and lookout signage", category: "tourism" },
+      { text: "Poloa road resurfacing project", category: "transportation" },
+    ],
   },
   v62: {
     name: "Rose",
@@ -498,31 +754,61 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Sa'ilele",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Sa'ilele rural health clinic outreach", category: "healthcare" },
+      {
+        text: "Sa'ilele youth vocational training center",
+        category: "education",
+      },
+    ],
   },
   v64: {
     name: "Satala",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Satala water catchment system repair",
+        category: "public-systems",
+      },
+      { text: "Satala community fale renovation", category: "infrastructure" },
+    ],
   },
   v65: {
     name: "Se'etaga",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Se'etaga road resurfacing project", category: "transportation" },
+      {
+        text: "Se'etaga village council chambers upgrade",
+        category: "public-systems",
+      },
+    ],
   },
   v66: {
     name: "Si'ufaga",
     summary:
       "Village in the Manu'a district (Ta'u county), on Ta'u. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Si'ufaga community water tank project",
+        category: "public-systems",
+      },
+      {
+        text: "Si'ufaga copra drying shed restoration",
+        category: "agriculture",
+      },
+    ],
   },
   v67: {
     name: "Sili",
     summary:
       "Village in the Manu'a district (Olosega county), on Olosega. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Sili reef monitoring station", category: "science" },
+      { text: "Sili community water tank project", category: "public-systems" },
+    ],
   },
   v68: {
     name: "Swains",
@@ -543,18 +829,32 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Taputimu",
     summary:
       "Village in the Western district (Tualatai county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Taputimu village council chambers upgrade",
+        category: "public-systems",
+      },
+      {
+        text: "Taputimu elementary school refurbishment",
+        category: "education",
+      },
+    ],
   },
   v71: {
     name: "Tula",
     summary:
       "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Tula coastal erosion mitigation project",
+        category: "conservation",
+      },
+      { text: "Tula rooftop solar installation program", category: "energy" },
+    ],
   },
   v72: {
     name: "Utulei",
-    summary:
-      "Village in the Eastern district (Ma'oputasi county), on Tutuila.",
+    summary: "Village in the Eastern district (Ma'oputasi county), on Tutuila.",
     highlights: [
       { text: "Blunts Point battery restoration", category: "defence" },
       { text: "Utulei digital services center", category: "ai" },
@@ -564,25 +864,55 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Utumea East",
     summary:
       "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Utumea East small-boat harbor improvements",
+        category: "fisheries",
+      },
+      {
+        text: "Utumea East traditional plantation revival",
+        category: "agriculture",
+      },
+    ],
   },
   v74: {
     name: "Utumea West",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Utumea West elementary school refurbishment",
+        category: "education",
+      },
+      {
+        text: "Utumea West hiking trail and lookout signage",
+        category: "tourism",
+      },
+    ],
   },
   v75: {
     name: "Utusia",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Utusia rooftop solar installation program", category: "energy" },
+      { text: "Utusia rural health clinic outreach", category: "healthcare" },
+    ],
   },
   v76: {
     name: "Vailoatai",
     summary:
       "Village in the Western district (Tualatai county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Vailoatai traditional plantation revival",
+        category: "agriculture",
+      },
+      {
+        text: "Vailoatai water catchment system repair",
+        category: "public-systems",
+      },
+    ],
   },
   v77: {
     name: "Vaitogi",
@@ -606,181 +936,366 @@ const VILLAGES: Record<string, VillageInfo> = {
     name: "Aasu",
     summary:
       "Village in the Western district (Leasina county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Aasu hiking trail and lookout signage", category: "tourism" },
+      { text: "Aasu road resurfacing project", category: "transportation" },
+    ],
   },
   v80: {
     name: "Afao",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Afao rural health clinic outreach", category: "healthcare" },
+      { text: "Afao youth vocational training center", category: "education" },
+    ],
   },
   v81: {
     name: "Afono",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Afono water catchment system repair",
+        category: "public-systems",
+      },
+      { text: "Afono community fale renovation", category: "infrastructure" },
+    ],
   },
   v82: {
     name: "Agugulu",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Agugulu road resurfacing project", category: "transportation" },
+      {
+        text: "Agugulu village council chambers upgrade",
+        category: "public-systems",
+      },
+    ],
   },
   v83: {
     name: "Alao",
     summary:
       "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Alao youth vocational training center", category: "education" },
+      {
+        text: "Alao coastal erosion mitigation project",
+        category: "conservation",
+      },
+    ],
   },
   v84: {
     name: "Alega",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Alega community fale renovation", category: "infrastructure" },
+      { text: "Alega small-boat harbor improvements", category: "fisheries" },
+    ],
   },
   v85: {
     name: "Alofau",
     summary:
       "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Alofau village council chambers upgrade",
+        category: "public-systems",
+      },
+      { text: "Alofau elementary school refurbishment", category: "education" },
+    ],
   },
   v86: {
     name: "Amaluia",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Amaluia coastal erosion mitigation project",
+        category: "conservation",
+      },
+      {
+        text: "Amaluia rooftop solar installation program",
+        category: "energy",
+      },
+    ],
   },
   v87: {
     name: "Amanave",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Amanave small-boat harbor improvements", category: "fisheries" },
+      {
+        text: "Amanave traditional plantation revival",
+        category: "agriculture",
+      },
+    ],
   },
   v88: {
     name: "Amaua",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Amaua elementary school refurbishment", category: "education" },
+      { text: "Amaua hiking trail and lookout signage", category: "tourism" },
+    ],
   },
   v89: {
     name: "Amouli",
     summary:
       "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Amouli rooftop solar installation program", category: "energy" },
+      { text: "Amouli rural health clinic outreach", category: "healthcare" },
+    ],
   },
   v90: {
     name: "Anua",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Anua traditional plantation revival", category: "agriculture" },
+      {
+        text: "Anua water catchment system repair",
+        category: "public-systems",
+      },
+    ],
   },
   v91: {
     name: "Aoa",
     summary:
       "Village in the Eastern district (Vaifanua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Aoa hiking trail and lookout signage", category: "tourism" },
+      { text: "Aoa road resurfacing project", category: "transportation" },
+    ],
   },
   v92: {
     name: "Aoloau",
     summary:
       "Village in the Western district (Leasina county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Aoloau rural health clinic outreach", category: "healthcare" },
+      {
+        text: "Aoloau youth vocational training center",
+        category: "education",
+      },
+    ],
   },
   v93: {
     name: "Asili",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Asili water catchment system repair",
+        category: "public-systems",
+      },
+      { text: "Asili community fale renovation", category: "infrastructure" },
+    ],
   },
   v94: {
     name: "Atu'u",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Atu'u road resurfacing project", category: "transportation" },
+      {
+        text: "Atu'u village council chambers upgrade",
+        category: "public-systems",
+      },
+    ],
+  },
+  v95: {
+    name: "Aunu'u",
+    summary:
+      "Small volcanic island off Tutuila's eastern tip, reached by boat from Auasi.",
+    highlights: [
+      { text: "Aunu\u2019u crater lake study", category: "research" },
+    ],
   },
   v96: {
     name: "Au'asi",
     summary:
       "Village in the Eastern district (Sa'ole county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Au'asi youth vocational training center",
+        category: "education",
+      },
+      {
+        text: "Au'asi coastal erosion mitigation project",
+        category: "conservation",
+      },
+    ],
   },
   v97: {
     name: "Aua",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Aua community fale renovation", category: "infrastructure" },
+      { text: "Aua small-boat harbor improvements", category: "fisheries" },
+    ],
   },
   v98: {
     name: "Auma",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Auma village council chambers upgrade",
+        category: "public-systems",
+      },
+      { text: "Auma elementary school refurbishment", category: "education" },
+    ],
   },
   v99: {
     name: "Aumi",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Aumi coastal erosion mitigation project",
+        category: "conservation",
+      },
+      { text: "Aumi rooftop solar installation program", category: "energy" },
+    ],
   },
   v100: {
     name: "Aunu'u",
     summary:
       "Village in the Eastern district (Sa'ole county), on Aunu'u. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Aunu'u small-boat harbor improvements", category: "fisheries" },
+      {
+        text: "Aunu'u traditional plantation revival",
+        category: "agriculture",
+      },
+    ],
   },
   v101: {
     name: "Auto",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Auto elementary school refurbishment", category: "education" },
+      { text: "Auto hiking trail and lookout signage", category: "tourism" },
+    ],
   },
   v102: {
     name: "Avaio",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Avaio rooftop solar installation program", category: "energy" },
+      { text: "Avaio rural health clinic outreach", category: "healthcare" },
+    ],
   },
   v103: {
     name: "Faga'alu",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Faga'alu traditional plantation revival",
+        category: "agriculture",
+      },
+      {
+        text: "Faga'alu water catchment system repair",
+        category: "public-systems",
+      },
+    ],
   },
   v104: {
     name: "Faga'itua",
     summary:
       "Village in the Eastern district (Sua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Faga'itua hiking trail and lookout signage",
+        category: "tourism",
+      },
+      {
+        text: "Faga'itua road resurfacing project",
+        category: "transportation",
+      },
+    ],
   },
   v105: {
     name: "Fagali'i",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      { text: "Fagali'i rural health clinic outreach", category: "healthcare" },
+      {
+        text: "Fagali'i youth vocational training center",
+        category: "education",
+      },
+    ],
   },
   v106: {
     name: "Fagamalo",
     summary:
       "Village in the Western district (Lealataua county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Fagamalo water catchment system repair",
+        category: "public-systems",
+      },
+      {
+        text: "Fagamalo community fale renovation",
+        category: "infrastructure",
+      },
+    ],
   },
   v107: {
     name: "Faganeanea",
     summary:
       "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Faganeanea road resurfacing project",
+        category: "transportation",
+      },
+      {
+        text: "Faganeanea village council chambers upgrade",
+        category: "public-systems",
+      },
+    ],
   },
   v108: {
     name: "Fagasa",
     summary:
       "Village in the Eastern district (Ituau county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Fagasa youth vocational training center",
+        category: "education",
+      },
+      {
+        text: "Fagasa coastal erosion mitigation project",
+        category: "conservation",
+      },
+    ],
   },
   v109: {
     name: "Fagatogo",
     summary:
       "Village in the Eastern district (Ma'oputasi county), on Tutuila. (Placeholder match -- confirm against the real shape.)",
-    highlights: [],
+    highlights: [
+      {
+        text: "Fagatogo community fale renovation",
+        category: "infrastructure",
+      },
+      {
+        text: "Fagatogo small-boat harbor improvements",
+        category: "fisheries",
+      },
+    ],
   },
 };
 
@@ -1152,9 +1667,6 @@ export default function Samoa() {
         <div className="rounded-2xl border border-white/10 bg-[#12141c]/90 p-4 shadow-2xl backdrop-blur">
           <h1 className="text-[15px] font-semibold tracking-tight text-white">
             AMERICAN SAMOA IS{" "}
-            <span className="text-orange-400" style={{ fontFamily: "serif" }}>
-              Atina\u02bbe
-            </span>
           </h1>
           <div className="mt-2 inline-block rounded-md bg-orange-500/15 px-2 py-1 text-[10px] font-semibold tracking-wide text-orange-400">
             FLAG DAY EDITION
