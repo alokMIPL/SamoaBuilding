@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Anchor,
   ArrowRight,
@@ -1327,6 +1327,7 @@ const SIGNALS = [
     x: 195,
     y: 127,
     count: 9,
+    days: 0,
     category: "infrastructure",
     title: "Pago Pago Harbor upgrade",
     district: "v42",
@@ -1336,6 +1337,7 @@ const SIGNALS = [
     x: 207,
     y: 110,
     count: 1,
+    days: 1,
     category: "defence",
     title: "Blunts Point battery restoration",
     district: "v72",
@@ -1345,6 +1347,7 @@ const SIGNALS = [
     x: 280,
     y: 15,
     count: 1,
+    days: 2,
     category: "education",
     title: "Ta\u2019u community campus",
     district: "v41",
@@ -1354,6 +1357,7 @@ const SIGNALS = [
     x: 45,
     y: 200,
     count: 1,
+    days: 3,
     category: "infrastructure",
     title: "Leone village seawall",
     district: "v39",
@@ -1363,6 +1367,7 @@ const SIGNALS = [
     x: 120,
     y: 200,
     count: 1,
+    days: 4,
     category: "energy",
     title: "Tafuna solar array",
     district: "v69",
@@ -1372,6 +1377,7 @@ const SIGNALS = [
     x: 195,
     y: 110,
     count: 1,
+    days: 5,
     category: "space",
     title: "Mount Alava satellite relay",
     district: "v29",
@@ -1381,6 +1387,7 @@ const SIGNALS = [
     x: 125,
     y: 205,
     count: 1,
+    days: 0,
     category: "transportation",
     title: "Pago Pago Int\u2019l runway extension",
     district: "v33",
@@ -1390,6 +1397,7 @@ const SIGNALS = [
     x: 150,
     y: 195,
     count: 1,
+    days: 1,
     category: "transportation",
     title: "Ottoville\u2013Nu\u2019uuli coastal road",
     district: "v53",
@@ -1399,6 +1407,7 @@ const SIGNALS = [
     x: 190,
     y: 130,
     count: 1,
+    days: 2,
     category: "research",
     title: "Fagatogo marine lab",
     district: "v30",
@@ -1408,6 +1417,7 @@ const SIGNALS = [
     x: 140,
     y: 190,
     count: 1,
+    days: 3,
     category: "ai",
     title: "ASCC tech hub",
     district: "v48",
@@ -1417,6 +1427,7 @@ const SIGNALS = [
     x: 200,
     y: 130,
     count: 2,
+    days: 4,
     category: "ai",
     title: "Utulei digital services center",
     district: "v72",
@@ -1426,6 +1437,7 @@ const SIGNALS = [
     x: 205,
     y: 125,
     count: 3,
+    days: 5,
     category: "manufacturing",
     title: "Atu\u2019u cannery expansion",
     district: "v16",
@@ -1435,6 +1447,7 @@ const SIGNALS = [
     x: 195,
     y: 135,
     count: 6,
+    days: 0,
     category: "startups",
     title: "Fagatogo startup incubator",
     district: "v30",
@@ -1444,6 +1457,7 @@ const SIGNALS = [
     x: 305,
     y: 152,
     count: 1,
+    days: 1,
     category: "research",
     title: "Aunu\u2019u crater lake study",
     district: "v95",
@@ -1453,6 +1467,7 @@ const SIGNALS = [
     x: 185,
     y: 135,
     count: 1,
+    days: 2,
     category: "public-systems",
     title: "LBJ Medical Center records system",
     district: "v24",
@@ -1462,6 +1477,7 @@ const SIGNALS = [
     x: 155,
     y: 190,
     count: 1,
+    days: 3,
     category: "manufacturing",
     title: "Malaeimi industrial park",
     district: "v44",
@@ -1471,6 +1487,7 @@ const SIGNALS = [
     x: 140,
     y: 170,
     count: 1,
+    days: 4,
     category: "agriculture",
     title: "Aoloau taro farms",
     district: "v14",
@@ -1480,6 +1497,7 @@ const SIGNALS = [
     x: 180,
     y: 135,
     count: 2,
+    days: 5,
     category: "public-systems",
     title: "Faga\u2019alu water treatment plant",
     district: "v24",
@@ -1489,6 +1507,7 @@ const SIGNALS = [
     x: 95,
     y: 205,
     count: 1,
+    days: 0,
     category: "agriculture",
     title: "Vaitogi plantation restoration",
     district: "v77",
@@ -1498,6 +1517,7 @@ const SIGNALS = [
     x: 160,
     y: 195,
     count: 1,
+    days: 1,
     category: "healthcare",
     title: "Ili\u2019ili community clinic",
     district: "v36",
@@ -1507,6 +1527,7 @@ const SIGNALS = [
     x: 150,
     y: 25,
     count: 1,
+    days: 2,
     category: "science",
     title: "Ofu coral research station",
     district: "v55",
@@ -1516,6 +1537,7 @@ const SIGNALS = [
     x: 20,
     y: 77,
     count: 1,
+    days: 3,
     category: "climate",
     title: "Swains Island monitoring buoy",
     district: "v68",
@@ -1525,6 +1547,7 @@ const SIGNALS = [
     x: 300,
     y: 225,
     count: 1,
+    days: 4,
     category: "conservation",
     title: "Rose Atoll refuge restoration",
     district: "v62",
@@ -1534,6 +1557,7 @@ const SIGNALS = [
     x: 225,
     y: 145,
     count: 1,
+    days: 5,
     category: "fisheries",
     title: "Alofau community fish landing",
     district: "v7",
@@ -1543,6 +1567,7 @@ const SIGNALS = [
     x: 200,
     y: 90,
     count: 1,
+    days: 0,
     category: "tourism",
     title: "Vatia rainforest trail signage",
     district: "v78",
@@ -1552,6 +1577,7 @@ const SIGNALS = [
     x: 290,
     y: 10,
     count: 1,
+    days: 1,
     category: "fisheries",
     title: "Faleasao fishing fleet modernization",
     district: "v32",
@@ -1561,6 +1587,7 @@ const SIGNALS = [
     x: 100,
     y: 210,
     count: 1,
+    days: 2,
     category: "tourism",
     title: "Vaitogi historic sliding rock overlook",
     district: "v77",
@@ -1570,6 +1597,7 @@ const SIGNALS = [
     x: 125,
     y: 195,
     count: 1,
+    days: 3,
     category: "startups",
     title: "Tafuna business incubator",
     district: "v69",
@@ -1579,6 +1607,7 @@ const SIGNALS = [
     x: 50,
     y: 195,
     count: 1,
+    days: 4,
     category: "healthcare",
     title: "Leone health clinic renovation",
     district: "v39",
@@ -1588,6 +1617,7 @@ const SIGNALS = [
     x: 145,
     y: 165,
     count: 1,
+    days: 5,
     category: "energy",
     title: "Aoloau microgrid pilot",
     district: "v14",
@@ -1597,6 +1627,7 @@ const SIGNALS = [
     x: 220,
     y: 155,
     count: 1,
+    days: 0,
     category: "education",
     title: "Faga\u2019itua high school renovation",
     district: "v25",
@@ -1619,10 +1650,46 @@ export default function SamoaMap() {
   const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [timeRange, setTimeRange] = useState<"today" | "48h" | "all">("48h");
+
+  const RANGE_MAX_DAYS: Record<"today" | "48h" | "all", number> = {
+    today: 0,
+    "48h": 2,
+    all: Infinity,
+  };
+
+  const rangeSignals = useMemo(
+    () => SIGNALS.filter((s) => s.days <= RANGE_MAX_DAYS[timeRange]),
+    [timeRange],
+  );
+
+  // Categories that actually have a signal within the selected time range.
+  // "All" is always shown so the user can clear the category filter.
+  const visibleCategories = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const s of rangeSignals) {
+      counts[s.category] = (counts[s.category] || 0) + s.count;
+    }
+    return CATEGORIES.filter(
+      (cat) => cat.id === "all" || counts[cat.id] > 0,
+    ).map((cat) =>
+      cat.id === "all"
+        ? { ...cat, count: rangeSignals.reduce((sum, s) => sum + s.count, 0) }
+        : { ...cat, count: counts[cat.id] },
+    );
+  }, [rangeSignals]);
+
+  // If the active category has no signals left in the newly selected time
+  // range, fall back to "all" instead of showing an empty list.
+  useEffect(() => {
+    if (active !== "all" && !visibleCategories.some((c) => c.id === active)) {
+      setActive("all");
+    }
+  }, [visibleCategories, active]);
 
   const visibleSignals = useMemo(
-    () => SIGNALS.filter((s) => active === "all" || s.category === active),
-    [active],
+    () => rangeSignals.filter((s) => active === "all" || s.category === active),
+    [rangeSignals, active],
   );
 
   return (
@@ -1680,7 +1747,7 @@ export default function SamoaMap() {
         </div>
 
         <div className=" overflow-y-auto rounded-2xl border border-white/10 bg-[#12141c]/90 p-1.5 shadow-2xl backdrop-blur [scrollbar-width:thin]">
-          {CATEGORIES.map((cat) => {
+          {visibleCategories.map((cat) => {
             const Icon = cat.icon;
             const isActive = active === cat.id;
             return (
@@ -1713,16 +1780,24 @@ export default function SamoaMap() {
       {/* Top-right stats panel                                        */}
       {/* ------------------------------------------------------------ */}
       <div className="absolute right-5 top-5 z-20 w-[210px] rounded-2xl border border-white/10 bg-[#12141c]/90 p-4 shadow-2xl backdrop-blur">
-        <StatRow label="TODAY" value={TOTAL_TODAY} />
-        <div className="my-2 flex items-center justify-between rounded-lg bg-white/[0.06] px-2.5 py-1.5">
-          <span className="text-[11px] font-medium tracking-wide text-white/70">
-            48 HOURS
-          </span>
-          <span className="text-[13px] font-semibold text-white">
-            {TOTAL_48H}
-          </span>
-        </div>
-        <StatRow label="ALL TIME" value={TOTAL_ALL_TIME} />
+        <StatButton
+          label="TODAY"
+          value={TOTAL_TODAY}
+          isActive={timeRange === "today"}
+          onClick={() => setTimeRange("today")}
+        />
+        <StatButton
+          label="48 HOURS"
+          value={TOTAL_48H}
+          isActive={timeRange === "48h"}
+          onClick={() => setTimeRange("48h")}
+        />
+        <StatButton
+          label="ALL TIME"
+          value={TOTAL_ALL_TIME}
+          isActive={timeRange === "all"}
+          onClick={() => setTimeRange("all")}
+        />
 
         <button className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-lg border border-orange-400/30 bg-orange-500/10 py-2 text-[12px] font-medium text-orange-300 transition-colors hover:bg-orange-500/20">
           <Plus className="h-3.5 w-3.5" strokeWidth={2} />
@@ -3409,5 +3484,43 @@ function StatRow({ label, value }: { label: string; value: string | number }) {
       </span>
       <span className="text-[13px] font-semibold text-white/90">{value}</span>
     </div>
+  );
+}
+
+function StatButton({
+  label,
+  value,
+  isActive,
+  onClick,
+}: {
+  label: string;
+  value: string | number;
+  isActive: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`my-1 flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-left transition-colors ${
+        isActive
+          ? "bg-white/[0.1] ring-1 ring-inset ring-orange-400/40"
+          : "bg-white/[0.03] hover:bg-white/[0.06]"
+      }`}
+    >
+      <span
+        className={`text-[11px] font-medium tracking-wide ${
+          isActive ? "text-orange-300" : "text-white/60"
+        }`}
+      >
+        {label}
+      </span>
+      <span
+        className={`text-[13px] font-semibold ${
+          isActive ? "text-white" : "text-white/85"
+        }`}
+      >
+        {value}
+      </span>
+    </button>
   );
 }
